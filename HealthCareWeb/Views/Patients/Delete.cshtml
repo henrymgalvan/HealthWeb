@@ -1,0 +1,137 @@
+﻿@model HealthCareWeb.Models.Patient
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Patient</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label class="control-label col-md-2">First Name</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstName)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Last Name</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastName)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Prefix</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prefix)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Date Of Birth</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dob)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Age</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.age)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Phone</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Address</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Email</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Gender</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Marital Status</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maritalStatus)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Language</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.language)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Religon</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.religion)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Primary Doctor</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrimaryDoctor)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2">Emergency Contact</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emergencyContact)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
