@@ -1,0 +1,78 @@
+﻿@model HealthCareWeb.Models.Appointment
+
+@{
+    ViewBag.Title = "Appointment Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Appointment</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Patient</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Patient Name</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.PatientName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">DoctorName</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.DoctorName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Added By</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.UserId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Year </label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.year)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Month</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Month)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Day</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.day)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Time</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.hour)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Description</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.description)
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "MyAppointments")
+</div>
+

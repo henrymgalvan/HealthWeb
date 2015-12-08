@@ -12,5 +12,6 @@ namespace HealthCareWeb.Models
         //DbSet<Patient> Patients { get; set; }
 
         public System.Data.Entity.DbSet<HealthCareWeb.Models.Patient> Patients { get; set; }
+        public System.Data.Entity.DbSet<HealthCareWeb.Models.Appointment> Appointments { get; set; }
     }
 }

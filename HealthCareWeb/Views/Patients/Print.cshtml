@@ -1,0 +1,106 @@
+﻿@model HealthCareWeb.Models.Patient
+@{
+    ViewBag.Title = "Print";
+
+}
+
+<h1>@Html.DisplayFor(model => model.lastName),
+@Html.DisplayFor(model => model.firstName)</h1>
+
+<div>
+
+<hr />
+<div class="col-md-4">
+    <label class="control-label col-md-6">Prefix</label>
+    <div class="col-md-4">
+        <p>
+            @Html.DisplayFor(model => model.prefix)
+        </p>
+    </div>
+    <label class="control-label col-md-6">Date Of Birth</label>
+    <div class="col-md-4">
+        <p>
+            @Html.DisplayFor(model => model.dob)
+
+        </p>
+    </div>
+    <label class="control-label col-md-6">Age</label>
+    <div class="col-md-4">
+        <p>
+            @Html.DisplayFor(model => model.age)
+
+        </p>
+    </div>
+    <label class="control-label col-md-6">Gender</label>
+    <div class="col-md-4">
+        <p>
+            @Html.DisplayFor(model => model.gender)
+
+        </p>
+    </div>
+
+</div>
+<div class="col-md-4">
+    <label class="control-label col-md-6">Phone</label>
+    <div class="col-md-4">
+        <p>
+            @Html.DisplayFor(model => model.phone)
+
+        </p>
+    </div>
+    <label class="control-label col-md-6">Address</label>
+    <div class="col-md-4">
+        <p>
+            @Html.DisplayFor(model => model.address)
+
+        </p>
+    </div>
+    <label class="control-label col-md-6">Email</label>
+    <div class="col-md-4">
+        <p>
+            @Html.DisplayFor(model => model.email)
+
+        </p>
+    </div>
+</div>
+<div class="col-md-4">
+    <label class="control-label col-md-6">Marital Status</label>
+    <div class="col-md-4">
+        <p>
+            @Html.DisplayFor(model => model.maritalStatus)
+
+        </p>
+    </div>
+    <label class="control-label col-md-6">Language</label>
+    <div class="col-md-4">
+        <p>
+            @Html.DisplayFor(model => model.language)
+
+        </p>
+    </div>
+    <label class="control-label col-md-6">Religon</label>
+    <div class="col-md-4">
+        <p>
+            @Html.DisplayFor(model => model.religion)
+
+        </p>
+    </div>
+    <label class="control-label col-md-6">Primary Doctor</label>
+    <div class="col-md-4">
+        <p>
+            @Html.DisplayFor(model => model.PrimaryDoctor)
+
+        </p>
+    </div>
+    <label class="control-label col-md-6">Emergency Contact</label>
+    <div class="col-md-4">
+        <p>
+            @Html.DisplayFor(model => model.emergencyContact)
+
+        </p>
+    </div>
+</div>
+</div>
+<script language="javascript">
+window.print();
+</script>

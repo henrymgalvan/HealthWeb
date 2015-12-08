@@ -28,6 +28,7 @@ namespace HealthCareWeb.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int hospitalID { get; set; }
 
+        public virtual Appointment AppointmentId { get; set; }
 
         public Patient()
         {

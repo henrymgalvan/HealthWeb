@@ -41,7 +41,7 @@
   <ItemGroup>
     <Reference Include="DayPilot.Web.Mvc, Version=1.5.414.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DayPilot.Web.Mvc.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\Binary\Mvc5\DayPilot.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -170,20 +170,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512022209121_migrane.cs" />
-    <Compile Include="Migrations\201512022209121_migrane.Designer.cs">
-      <DependentUpon>201512022209121_migrane.cs</DependentUpon>
+    <Compile Include="Migrations\201512071808159_Initail.cs" />
+    <Compile Include="Migrations\201512071808159_Initail.Designer.cs">
+      <DependentUpon>201512071808159_Initail.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512022337230_ModelID.cs" />
-    <Compile Include="Migrations\201512022337230_ModelID.Designer.cs">
-      <DependentUpon>201512022337230_ModelID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512022354441_ModelID1.cs" />
-    <Compile Include="Migrations\201512022354441_ModelID1.Designer.cs">
-      <DependentUpon>201512022354441_ModelID1.cs</DependentUpon>
+    <Compile Include="Migrations\201512072009456_model.cs" />
+    <Compile Include="Migrations\201512072009456_model.Designer.cs">
+      <DependentUpon>201512072009456_model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Patient.cs" />
@@ -255,6 +252,7 @@
     <None Include="bin\HealthCareWeb.dll.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\daypilot-all.min.js" />
+    <Content Include="Scripts\DayPilot\daypilot-all.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -308,6 +306,13 @@
     <Content Include="Views\Patients\Details.cshtml" />
     <Content Include="Views\Patients\Edit.cshtml" />
     <Content Include="Views\Patients\Index.cshtml" />
+    <Content Include="Views\Home\MyAppointments.cshtml" />
+    <Content Include="Views\Patients\Print.cshtml" />
+    <Content Include="Views\Home\MyAppointmentsDefault.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\CreateApp.cshtml" />
+    <Content Include="Views\Home\Calendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -320,18 +325,15 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512022209121_migrane.resx">
-      <DependentUpon>201512022209121_migrane.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512022337230_ModelID.resx">
-      <DependentUpon>201512022337230_ModelID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512022354441_ModelID1.resx">
-      <DependentUpon>201512022354441_ModelID1.cs</DependentUpon>
-    </EmbeddedResource>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <EmbeddedResource Include="Migrations\201512071808159_Initail.resx">
+      <DependentUpon>201512071808159_Initail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512072009456_model.resx">
+      <DependentUpon>201512072009456_model.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

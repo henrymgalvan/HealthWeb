@@ -174,9 +174,27 @@ namespace HealthCareWeb.Controllers
             base.Dispose(disposing);
         }
 
-        public void Logincheck()
+        public ActionResult Print(int? id)
         {
-            
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Account", null);
+            }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Patient patient = db.Patients.Find(id);
+            if (patient == null)
+            {
+                return HttpNotFound();
+            }
+            return View(patient);
+        }
+
+        public ActionResult AddAppointment(int? id)
+        {
+            return RedirectToAction("CreateApp", "Home", new { ID = id });
         }
     }
 }

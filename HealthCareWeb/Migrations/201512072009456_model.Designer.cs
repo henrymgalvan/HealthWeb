@@ -7,13 +7,13 @@ namespace HealthCareWeb.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class ModelID : IMigrationMetadata
+    public sealed partial class model : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ModelID));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(model));
         
         string IMigrationMetadata.Id
         {
-            get { return "201512022337230_ModelID"; }
+            get { return "201512072009456_model"; }
         }
         
         string IMigrationMetadata.Source

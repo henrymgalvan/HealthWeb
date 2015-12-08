@@ -3,10 +3,26 @@ namespace HealthCareWeb.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class migrane : DbMigration
+    public partial class Initail : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Appointments",
+                c => new
+                    {
+                        AppointID = c.Int(nullable: false, identity: true),
+                        PatientName = c.String(),
+                        DoctorName = c.String(),
+                        UserId = c.String(),
+                        Month = c.String(),
+                        year = c.String(),
+                        day = c.String(),
+                        hour = c.String(),
+                        description = c.String(),
+                    })
+                .PrimaryKey(t => t.AppointID);
+            
             CreateTable(
                 "dbo.Patients",
                 c => new
@@ -34,6 +50,7 @@ namespace HealthCareWeb.Migrations
         public override void Down()
         {
             DropTable("dbo.Patients");
+            DropTable("dbo.Appointments");
         }
     }
 }

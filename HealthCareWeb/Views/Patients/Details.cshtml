@@ -6,7 +6,7 @@
 }
 
 <h2>Details</h2>
-
+        @Html.ActionLink("Add Appointment", "AddAppointment", new { id = Model.hospitalID }) 
 <div>
     <h4>@Html.DisplayFor(model => model.lastName),
         @Html.DisplayFor(model => model.firstName)</h4>
@@ -102,7 +102,9 @@
         </div>
     </div>
 </div>
+@*<input type="button" value="Print" onclick="window.print()" />*@
 <p>
+    @Html.ActionLink("Print", "Print", new { id = Model.hospitalID }) |
     @Html.ActionLink("Edit", "Edit", new { id = Model.hospitalID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

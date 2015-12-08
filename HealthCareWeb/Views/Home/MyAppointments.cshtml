@@ -1,0 +1,53 @@
+﻿@model IEnumerable<HealthCareWeb.Models.Appointment>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Appointments</h2>
+<p>
+    @Html.ActionLink("Add Appointment", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label class="control-label ">Patient Name</label>
+        </th>
+        <th>
+            <label class="control-label ">Doctor Name</label>
+        </th>
+
+        <th>
+            <label class="control-label ">Time</label>
+        </th>
+        <th>
+            <label class="control-label ">Description</label>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Month)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.hospitalID }) |*@
+                @Html.ActionLink("Details", "Details", new { id = item.AppointID }) 
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.hospitalID })*@
+            </td>
+        </tr>
+    }
+
+</table>
+
