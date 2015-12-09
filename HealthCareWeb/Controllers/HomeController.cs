@@ -15,6 +15,7 @@ namespace HealthCareWeb.Controllers
     public class HomeController : Controller
     {
         private PatientDBContext db = new PatientDBContext();
+        AppointmentChecker appChecker = new AppointmentChecker();
         public ActionResult Index()
         {
             return View();
@@ -86,17 +87,41 @@ namespace HealthCareWeb.Controllers
             return View(app);
         }
 
-        // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PatientName, DoctorName, UserId, Month, year, day, hour, description, AppointID")] Appointment appointment)
+        public ActionResult CreateApp([Bind(Include = "PatientName, DoctorName, UserId, Time, description, AppointID, patientID")] Appointment appointment)
         {
             if (User.Identity.IsAuthenticated == false)
             {
                 return RedirectToAction("Login", "Account", null);
             }
-             if (ModelState.IsValid)
+            if (ModelState.IsValid && appChecker.CheckAgainstAll(appointment))
             {
+                //if(appointment.patientID != null)
+                //{
+                //    Patient patient = db.Patients.Find(appointment.patientID);
+                //    patient.AppointmentId = appointment.AppointID;
+                //}
+                appointment.UserId = User.Identity.Name;
+                db.Appointments.Add(appointment);
+                db.SaveChanges();
+                return RedirectToAction("MyAppointments");
+            }
+
+            return View(appointment);
+        }
+        // POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "PatientName, DoctorName, UserId, Time, description, AppointID")] Appointment appointment)
+        {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Account", null);
+            }
+            if (ModelState.IsValid && appChecker.CheckAgainstAll(appointment))
+            {
+                
                 appointment.UserId = User.Identity.Name;
                 db.Appointments.Add(appointment);
                 db.SaveChanges();
@@ -122,6 +147,11 @@ namespace HealthCareWeb.Controllers
                 return HttpNotFound();
             }
             return View(app);
+        }
+
+        public ActionResult Alerts()
+        {
+            return View();
         }
 
     }

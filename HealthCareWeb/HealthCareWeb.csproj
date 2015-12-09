@@ -178,9 +178,34 @@
     <Compile Include="Migrations\201512072009456_model.Designer.cs">
       <DependentUpon>201512072009456_model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512081940315_model1.cs" />
+    <Compile Include="Migrations\201512081940315_model1.Designer.cs">
+      <DependentUpon>201512081940315_model1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512081942116_model11.cs" />
+    <Compile Include="Migrations\201512081942116_model11.Designer.cs">
+      <DependentUpon>201512081942116_model11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512081959417_model2.cs" />
+    <Compile Include="Migrations\201512081959417_model2.Designer.cs">
+      <DependentUpon>201512081959417_model2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512082009360_model3.cs" />
+    <Compile Include="Migrations\201512082009360_model3.Designer.cs">
+      <DependentUpon>201512082009360_model3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512082009566_model4.cs" />
+    <Compile Include="Migrations\201512082009566_model4.Designer.cs">
+      <DependentUpon>201512082009566_model4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512082039372_model6.cs" />
+    <Compile Include="Migrations\201512082039372_model6.Designer.cs">
+      <DependentUpon>201512082039372_model6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\AppointmentChecker.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Patient.cs" />
@@ -189,6 +214,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\HealthCareWeb.Models.PatientDBContext.mdf" />
+    <Content Include="App_Data\HealthCareWeb.Models.PatientDBContext_log.ldf">
+      <DependentUpon>HealthCareWeb.Models.PatientDBContext.mdf</DependentUpon>
+    </Content>
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\DayPilot.Web.Mvc.dll" />
@@ -312,11 +341,9 @@
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\CreateApp.cshtml" />
-    <Content Include="Views\Home\Calendar.cshtml" />
+    <Content Include="Views\Home\Alerts.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -333,6 +360,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512072009456_model.resx">
       <DependentUpon>201512072009456_model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512081940315_model1.resx">
+      <DependentUpon>201512081940315_model1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512081942116_model11.resx">
+      <DependentUpon>201512081942116_model11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512081959417_model2.resx">
+      <DependentUpon>201512081959417_model2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512082009360_model3.resx">
+      <DependentUpon>201512082009360_model3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512082009566_model4.resx">
+      <DependentUpon>201512082009566_model4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512082039372_model6.resx">
+      <DependentUpon>201512082039372_model6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
