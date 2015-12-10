@@ -18,14 +18,6 @@ namespace HealthCareWeb.Models
 
         public string UserId { get; set; }
 
-        //public string Month { get; set; }
-
-        //public string year { get; set; }
-
-        //public string day { get; set; }
-
-        //public string hour { get; set; }
-
         public DateTime? Time { get; set; }
         public string description { get; set; }
         [Key]

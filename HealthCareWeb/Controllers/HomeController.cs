@@ -16,6 +16,7 @@ namespace HealthCareWeb.Controllers
     {
         private PatientDBContext db = new PatientDBContext();
         AppointmentChecker appChecker = new AppointmentChecker();
+        AlertChecker alert = new AlertChecker();
         public ActionResult Index()
         {
             return View();
@@ -148,11 +149,71 @@ namespace HealthCareWeb.Controllers
             }
             return View(app);
         }
+        public ActionResult EditApp(int? id)
+        {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Account", null);
+            }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Appointment app = db.Appointments.Find(id);
+            if (app == null)
+            {
+                return HttpNotFound();
+            }
+            return View(app);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditApp([Bind(Include = "PatientName, DoctorName, UserId, Time, description, AppointID")] Appointment appointment)
+        {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Account", null);
+            }
+            if (ModelState.IsValid)
+            {
+                db.Entry(appointment).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(appointment);
+        }
 
         public ActionResult Alerts()
         {
+            alert.checkApp();
+            alert.checkPatients();
+            ViewBag.appAlerts = alert.appointmentsAlerts.Count();
+            ViewBag.patientAlerts = alert.patientsAlerts.Count();
             return View();
         }
 
+        public ActionResult PatientAlerts()
+        {
+            alert.checkPatients();
+            List<Patient> patients = new List<Patient>();
+            for (int i = 0; i < alert.patientsAlerts.Count; i++)
+            {
+                Patient patient = db.Patients.Find(alert.patientsAlerts[i].ID);
+                patients.Add(patient);
+            }
+            return View(patients);
+        }
+        public ActionResult AppAlerts()
+        {
+            alert.checkApp();
+            List<Appointment> apps = new List<Appointment>();
+            for (int i = 0; i < alert.appointmentsAlerts.Count; i++)
+            {
+                Appointment app = db.Appointments.Find(alert.appointmentsAlerts[i].ID);
+                apps.Add(app);
+            }
+            return View(apps);
+        }
     }
 }
