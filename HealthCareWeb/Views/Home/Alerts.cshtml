@@ -4,5 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Alerts</h2>
+<h1>Alerts</h1>
+<h5>This page shows the number of records with incomplete or missing data.</h5>
 
+<h3>Medical Records Alerts: <font color="red">@ViewBag.patientAlerts</font></h3>  
+@Html.ActionLink("View medical records with incomplete data", "PatientAlerts")
+<h3>Appointment Records Alerts: <font color="red">@ViewBag.AppAlerts</font></h3>  
+@Html.ActionLink("View appointments with incomplete data", "AppAlerts")

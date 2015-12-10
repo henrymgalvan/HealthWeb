@@ -1,8 +1,53 @@
-﻿
+﻿@model IEnumerable<HealthCareWeb.Models.Appointment>
+
 @{
-    ViewBag.Title = "AppAlerts";
+    ViewBag.Title = "View";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>AppAlerts</h2>
+<h2>Appointment Alerts</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            <label class="control-label ">Patient Name</label>
+        </th>
+        <th>
+            <label class="control-label ">Doctor Name</label>
+        </th>
+
+        <th>
+            <label class="control-label ">Time</label>
+        </th>
+        <th>
+            <label class="control-label ">Description</label>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditApp", new { id = item.AppointID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.AppointID })
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.hospitalID })*@
+            </td>
+        </tr>
+    }
+
+</table>
+
+
 

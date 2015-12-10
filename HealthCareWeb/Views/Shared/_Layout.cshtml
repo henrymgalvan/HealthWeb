@@ -22,8 +22,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     <li>@Html.ActionLink("Medical Records", "Index", "Patients")</li>
                     <li>@Html.ActionLink("Appointments", "MyAppointments", "Home")</li>
                     <li>@Html.ActionLink("Alerts", "Alerts", "Home")</li>
@@ -36,7 +36,10 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - HealthCare</p>
+            <h4>Information</h4>
+            <h5>@Html.ActionLink("About", "About", "Home") </h5>
+            <h5>@Html.ActionLink("Contact", "Contact", "Home")</h5>
+            <p align="center">&copy; @DateTime.Now.Year - HealthCare</p>
         </footer>
     </div>
 
