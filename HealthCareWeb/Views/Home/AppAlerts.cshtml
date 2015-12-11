@@ -1,4 +1,5 @@
-﻿@model IEnumerable<HealthCareWeb.Models.Appointment>
+﻿@*@model IEnumerable<HealthCareWeb.Models.Appointment>*@
+@model IEnumerable<HealthCareWeb.Models.Alert>
 
 @{
     ViewBag.Title = "View";
@@ -9,7 +10,7 @@
 
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             <label class="control-label ">Patient Name</label>
         </th>
         <th>
@@ -21,13 +22,23 @@
         </th>
         <th>
             <label class="control-label ">Description</label>
+        </th>*@
+        <th>
+            <label class="control-label ">Patient Name</label>
+        </th>
+        <th>
+            <label class="control-label ">Record ID</label>
+        </th>
+
+        <th>
+            <label class="control-label ">Alert Description</label>
         </th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.PatientName)
             </td>
             <td>
@@ -38,10 +49,19 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.description)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditApp", new { id = item.AppointID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.AppointID })
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.message)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditApp", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID })
                 @*@Html.ActionLink("Delete", "Delete", new { id = item.hospitalID })*@
             </td>
         </tr>

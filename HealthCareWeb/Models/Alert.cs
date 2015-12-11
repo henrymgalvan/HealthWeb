@@ -7,7 +7,7 @@ namespace HealthCareWeb.Models
 {
     public class Alert
     {
-        public string Type;
+        public string name;
         public int ID;
         public string message;
 

@@ -31,7 +31,7 @@ namespace HealthCareWeb.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contact Information.";
 
             return View();
         }
@@ -186,6 +186,10 @@ namespace HealthCareWeb.Controllers
 
         public ActionResult Alerts()
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Account", null);
+            }
             alert.checkApp();
             alert.checkPatients();
             ViewBag.appAlerts = alert.appointmentsAlerts.Count();
@@ -195,25 +199,55 @@ namespace HealthCareWeb.Controllers
 
         public ActionResult PatientAlerts()
         {
+            //alert.checkPatients();
+            //List<Patient> patients = new List<Patient>();
+            //for (int i = 0; i < alert.patientsAlerts.Count; i++)
+            //{
+            //    Patient patient = db.Patients.Find(alert.patientsAlerts[i].ID);
+            //    patients.Add(patient);
+            //}
+            //return View(patients);
             alert.checkPatients();
-            List<Patient> patients = new List<Patient>();
+            List<Alert> alerts = new List<Alert>();
             for (int i = 0; i < alert.patientsAlerts.Count; i++)
             {
-                Patient patient = db.Patients.Find(alert.patientsAlerts[i].ID);
-                patients.Add(patient);
+                Alert al = alert.patientsAlerts[i];
+                alerts.Add(al);
             }
-            return View(patients);
+            return View(alerts);
         }
         public ActionResult AppAlerts()
         {
             alert.checkApp();
-            List<Appointment> apps = new List<Appointment>();
+            //List<Appointment> apps = new List<Appointment>();
+            //for (int i = 0; i < alert.appointmentsAlerts.Count; i++)
+            //{
+            //    Appointment app = db.Appointments.Find(alert.appointmentsAlerts[i].ID);
+            //    apps.Add(app);
+            //}
+            //return View(apps);
+            List<Alert> alerts = new List<Alert>();
             for (int i = 0; i < alert.appointmentsAlerts.Count; i++)
             {
-                Appointment app = db.Appointments.Find(alert.appointmentsAlerts[i].ID);
-                apps.Add(app);
+                Alert al = alert.appointmentsAlerts[i];
+                alerts.Add(al);
             }
-            return View(apps);
+            return View(alerts);
+        }
+
+        public ActionResult Edit(int? ID)
+        {
+            return RedirectToAction("Edit", "Patients", new { id = ID});
+        }
+
+        public ActionResult DetailsPatient(int? ID)
+        {
+            return RedirectToAction("Details", "Patients", new { id = ID});
+        }
+
+        public ActionResult Delete(int? ID)
+        {
+            return RedirectToAction("Delete", "Patients", new { id = ID });
         }
     }
 }

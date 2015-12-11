@@ -6,6 +6,8 @@
 }
 
 <h2>Details</h2>
+<h4 align="right"><font color="red">@ViewBag.Alert</font></h4>
+<h5 align="right"><font color="red">@ViewBag.AlertMessage</font></h5>
         @Html.ActionLink("Add Appointment", "AddAppointment", new { id = Model.hospitalID }) 
 <div>
     <h4>@Html.DisplayFor(model => model.lastName),

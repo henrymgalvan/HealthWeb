@@ -16,7 +16,7 @@ namespace HealthCareWeb.Controllers
 
    
         private PatientDBContext db = new PatientDBContext();
-
+        AlertChecker alert = new AlertChecker();
         // GET: Patients
         //public ActionResult Index()
         //{
@@ -62,6 +62,18 @@ namespace HealthCareWeb.Controllers
             {
                 return HttpNotFound();
             }
+            alert.checkPatients();
+            if(alert.patientsAlerts.Count > 0)
+            {
+                for (int i = 0; i < alert.patientsAlerts.Count; i++)
+                {
+                    if (alert.patientsAlerts[i].ID == id)
+                    {
+                        ViewBag.Alert = "Alert: !";
+                        ViewBag.AlertMessage = "Record is missing content";
+                    }
+                }
+            }
             return View(patient);
         }
 
@@ -88,6 +100,7 @@ namespace HealthCareWeb.Controllers
             }
             if (ModelState.IsValid)
             {
+                SetAge(patient);
                 db.Patients.Add(patient);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -128,6 +141,7 @@ namespace HealthCareWeb.Controllers
             }
             if (ModelState.IsValid)
             {
+                SetAge(patient);
                 db.Entry(patient).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -195,6 +209,16 @@ namespace HealthCareWeb.Controllers
         public ActionResult AddAppointment(int? id)
         {
             return RedirectToAction("CreateApp", "Home", new { ID = id });
+        }
+
+        public void SetAge(Patient patient)
+        {
+            double ApproxDaysPerYear = 365.25;
+            DateTime birthday = new DateTime();
+            DateTime.TryParse(patient.dob, out birthday);
+            int days = (DateTime.Now.Subtract(birthday)).Days;
+            int years = (int)(days / ApproxDaysPerYear);
+            patient.age = years.ToString();
         }
     }
 }
